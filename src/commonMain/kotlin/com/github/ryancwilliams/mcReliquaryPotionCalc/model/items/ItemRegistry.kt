@@ -20,7 +20,7 @@ object ItemRegistry : Registry<Item>() {
      * @return The item or NULL if the item is not in this registry.
      */
     fun getItemByName(name: String) : Item? {
-        return this.indexByItemName.get(name)
+        return this.indexByItemName.get(normalizeName(name))
     }
 
     override fun addToIndex(item: Item) {
@@ -32,10 +32,17 @@ object ItemRegistry : Registry<Item>() {
      */
     private fun addToIndexByItemName(item: Item) {
         //Get the name
-        val name = item.itemName;
+        val name = normalizeName(item.itemName);
 
         //Add to the index
         this.indexByItemName.put(name, item)
+    }
+
+    /**
+     * Converts name strings to a standard form.
+     */
+    private fun normalizeName(name: String) : String {
+        return name.toUpperCase();
     }
 
 }
