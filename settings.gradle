@@ -1,0 +1,4 @@
+rootProject.name = 'mcReliquaryPotionCalc'
+
+
+enableFeaturePreview('GRADLE_METADATA')

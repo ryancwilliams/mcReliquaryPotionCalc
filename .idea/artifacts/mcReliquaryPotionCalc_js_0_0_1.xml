@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="mcReliquaryPotionCalc-js-0.0.1">
+    <output-path>G:\Shared\Projects\Minecraft\mcReliquaryPotionCalc\build\libs</output-path>
+    <root id="archive" name="mcReliquaryPotionCalc-js-0.0.1.jar" />
+  </artifact>
+</component>
