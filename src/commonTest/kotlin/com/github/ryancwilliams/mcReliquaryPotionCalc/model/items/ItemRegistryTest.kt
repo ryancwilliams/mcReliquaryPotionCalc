@@ -6,7 +6,7 @@ import kotlin.test.asserter
 /**
  * Tests the Item Registry
  */
-class testItemRegistry {
+class ItemRegistryTest {
 
     val mockItemAName = "ItemA"
     val mockItemA = Item(mockItemAName)
