@@ -6,5 +6,5 @@ package com.github.ryancwilliams.mcReliquaryPotionCalc.model.potions
  * @param duration The duration the effect is applied for. The duration is mesured in 15 second blocks of time.
  * @param potency The potency level of the effect.
  */
-data class PotionEffect (val effect: PotionEffect, val duration: Int = 0, val potency: Int = 0) {
+data class PotionEffect (val effect: Effect, val duration: Int = 0, val potency: Int = 0) {
 }
