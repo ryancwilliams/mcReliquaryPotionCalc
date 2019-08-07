@@ -12,7 +12,7 @@ object ItemRegistry : Registry<Item>() {
      *
      * This is used for quick access to the registry.
      */
-    val indexByItemName = HashMap<String, Item>()
+    private val indexByItemName = HashMap<String, Item>()
 
     /**
      * Gets a item by its name.
