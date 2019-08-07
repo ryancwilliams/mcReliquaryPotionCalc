@@ -10,7 +10,7 @@ object PotionIngredientRegistry : Registry<PotionIngredient>() {
      *
      * This is used for quick access to the registry.
      */
-    val indexByItem = HashMap<Item, PotionIngredient>()
+    private val indexByItem = HashMap<Item, PotionIngredient>()
 
     /**
      * A index of all known PotionIngredients by Effect.
@@ -19,7 +19,7 @@ object PotionIngredientRegistry : Registry<PotionIngredient>() {
      *
      * This is used for quick access to the registry.
      */
-    val indexByEffect = HashMap<Effect, HashSet<PotionIngredient>>()
+    private val indexByEffect = HashMap<Effect, HashSet<PotionIngredient>>()
 
     /**
      * Gets a PotionIngredient by its item.
