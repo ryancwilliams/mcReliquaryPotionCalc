@@ -7,6 +7,6 @@ import com.github.ryancwilliams.mcReliquaryPotionCalc.model.items.Item
  * @param item The item that is the ingredient.
  * @param effects The effects this ingredient can give to the potion.
  */
-data class PotionIngredient ( val item: Item, val effects: Set<PotionEffect>) {
+data class PotionIngredient ( val item: Item, override val effects: Set<PotionEffect>) : PotionComponent {
 
 }
