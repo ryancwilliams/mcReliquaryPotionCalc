@@ -37,6 +37,13 @@ abstract class Registry<I> {
     }
 
     /**
+     * Gets the entire registry as a set.
+     */
+    fun getRegistry() : Set<I> {
+        return this.items.toSet()
+    }
+
+    /**
      * Adds this item to the indexes in this registry. This is used to speed up access.
      */
     protected abstract fun addToIndex(item: I)
