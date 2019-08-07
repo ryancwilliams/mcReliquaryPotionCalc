@@ -9,5 +9,5 @@ interface PotionComponent {
      * A set of all effects this component has
      */
     val effects: Set<PotionEffect>
-    
+
 }
