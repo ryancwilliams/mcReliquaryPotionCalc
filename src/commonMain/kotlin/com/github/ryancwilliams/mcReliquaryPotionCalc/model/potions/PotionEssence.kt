@@ -50,7 +50,20 @@ class PotionEssence (val components: Set<PotionComponent>) : PotionComponent {
         }
 
         return effectsMap.toMap()
+    }
 
+    /**
+     * Computes the combined duration for the provided set of effects.
+     */
+    private fun computeCombinedDuration(effects: Set<PotionEffect>) : Int {
+        TODO()
+    }
+
+    /**
+     * Computes the combined potency for the provided set of effects.
+     */
+    private fun computeCombinedPotency(effects: Set<PotionEffect>) : Int {
+        TODO()
     }
 
 }
