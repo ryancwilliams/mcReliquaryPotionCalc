@@ -5,6 +5,11 @@ package com.github.ryancwilliams.mcReliquaryPotionCalc.model.potions
  */
 class PotionEssence (val components: Set<PotionComponent>) : PotionComponent {
 
+    /**
+     * The minimum number of components needed for a effect to be applied.
+     */
+    private val MIN_COMPOENTS = 2
+
     override val effects: Set<PotionEffect>
         get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
 
@@ -18,9 +23,28 @@ class PotionEssence (val components: Set<PotionComponent>) : PotionComponent {
         /**
          * Maps each effect to all potionEffects that give this effect
          */
-        val effectsMap = buildEffectsMap(components)
+        var effectsMap = buildEffectsMap(components)
 
-        TODO("Finish this")
+        //Filter to only have effects from more than 2 components.
+        effectsMap = effectsMap.filter { it.value.size >= MIN_COMPOENTS  }
+
+        //All effects in the map are to be applied.
+
+        //A set of applied effects
+        var finalEffects = HashSet<PotionEffect>()
+
+        //For each effect
+        for (effectEntry in effectsMap) {
+            val effect = effectEntry.key
+            val effectSet = effectEntry.value
+
+            val duration = computeCombinedDuration(effectSet)
+            val potency = computeCombinedPotency(effectSet)
+
+            finalEffects.add(PotionEffect(effect, duration, potency))
+        }
+
+        return finalEffects.toSet()
     }
 
     /**
