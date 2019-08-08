@@ -1,5 +1,8 @@
 package com.github.ryancwilliams.mcReliquaryPotionCalc.model.potions
 
+import kotlin.math.floor
+import kotlin.math.min
+
 /**
  * Repesents a PotionEssence. Potion Essences are what is used to build potions.
  */
@@ -10,8 +13,18 @@ class PotionEssence (val components: Set<PotionComponent>) : PotionComponent {
      */
     private val MIN_COMPOENTS = 2
 
-    override val effects: Set<PotionEffect>
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+    /**
+     * The maximum possible duration in 15 second segments.
+     */
+    private val MAX_DURATION = 36000;
+
+    /**
+     * The maximum possible potency in levels.
+     */
+    private val MAX_POTENCY = 4;
+
+
+    override val effects = computeEffects(components)
 
     /**
      * Converts a set of PotionComponent into a set of Effects.
@@ -80,14 +93,38 @@ class PotionEssence (val components: Set<PotionComponent>) : PotionComponent {
      * Computes the combined duration for the provided set of effects.
      */
     private fun computeCombinedDuration(effects: Set<PotionEffect>) : Int {
-        TODO()
+        //Initial duration
+        var duration = 0
+
+        for (effect in effects) {
+            //Add the duration up
+            duration += effect.duration
+        }
+
+        //Do some math magic the real reliquary does
+
+        duration = floor(duration / 1.2).toInt()
+
+        if (effects.size == 3) {
+            duration = floor(duration / 1.1).toInt()
+        }
+
+        return min(duration, MAX_DURATION)
     }
 
     /**
      * Computes the combined potency for the provided set of effects.
      */
     private fun computeCombinedPotency(effects: Set<PotionEffect>) : Int {
-        TODO()
+        //Initial potency
+        var potency = 0
+
+        for (effect in effects) {
+            //Add the potency up
+            potency += effect.potency
+        }
+
+        return minOf(potency, MAX_POTENCY)
     }
 
 }
