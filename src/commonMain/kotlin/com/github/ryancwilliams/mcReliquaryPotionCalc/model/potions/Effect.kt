@@ -12,14 +12,18 @@ enum class EffectType {
 /**
  * Status effects present in base minecraft.
  */
-enum class Effect (val effectName: String, val effectDescription: String = "", val effectType: EffectType = EffectType.NETURAL) {
+enum class Effect (
+        val effectName: String,
+        val effectDescription: String = "",
+        val effectType: EffectType = EffectType.NETURAL,
+        val isInstant: Boolean = false) {
     SPEED("Speed", "Increases walking speed", EffectType.POSITIVE),
     SLOWNESS("Slowness", "Decreases walking speed", EffectType.NEGATIVE),
     HASTE("Haste", "Increases mining and attack speed", EffectType.POSITIVE),
     MINING_FATIGUE("Mining Fatigue", "Decreases mining and attack speed", EffectType.NEGATIVE),
     STRENGTH("Strength", "Increases melee damage", EffectType.POSITIVE),
-    INSTANT_HEALTH("Instant Health", "Heals entities, damages undead", EffectType.POSITIVE),
-    INSTANT_DAMAGE("Instant Damage", "Damages entities, heals undead", EffectType.NEGATIVE),
+    INSTANT_HEALTH("Instant Health", "Heals entities, damages undead", EffectType.POSITIVE, isInstant = true),
+    INSTANT_DAMAGE("Instant Damage", "Damages entities, heals undead", EffectType.NEGATIVE, isInstant = true),
     JUMP_BOOST("Jump Boost", "Increases jump height and reduces fall damage", EffectType.POSITIVE),
     NAUSEA("Nausea", "Wobbles and warps the screen", EffectType.NEGATIVE),
     REGENERATION("Regeneration", "Regenerates health over time", EffectType.POSITIVE),
@@ -35,7 +39,7 @@ enum class Effect (val effectName: String, val effectDescription: String = "", v
     WITHER("Wither", "Inflicts damage over time (can kill)", EffectType.NEGATIVE),
     HEALTH_BOOST("Health Boost", "Increases maximum health", EffectType.POSITIVE),
     ABSORPTION("Absorption", "Adds damage absorption", EffectType.POSITIVE),
-    SATURATION("Saturation", "Restores hunger and saturation", EffectType.POSITIVE),
+    SATURATION("Saturation", "Restores hunger and saturation", EffectType.POSITIVE, isInstant = true),
     GLOWING("Glowing", "Outlines entities (can be seen through blocks)", EffectType.NEGATIVE),
     LEVITATION("Levitation", "Floats entities upwards", EffectType.NEGATIVE),
     LUCK("Luck", "Can increase chances of high-quality and more loot", EffectType.POSITIVE),
